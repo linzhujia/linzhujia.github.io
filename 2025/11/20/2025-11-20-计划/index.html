@@ -7,7 +7,12 @@
     <meta name="keywords" content="2025-11-20-计划, 林竺小筑">
     <meta name="description" content="有些事得提前规划，有些话要说到前头，有些日子得照着计划走 
 —— 不然像老李课、雅思学习、机器学习这些事堆在一块儿，再掺上中期报告、西安交流的安排，还有单粒子程序模拟和核心文章的活，很容易慌了手脚。
-">
+
+
+  项目进度时间线
+  
+  
+  ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -415,14 +420,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    85
+                    828
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
 
@@ -444,7 +449,228 @@
             <div id="articleContent">
                 <p>有些事得提前规划，有些话要说到前头，有些日子得照着计划走 </p>
 <p>—— 不然像老李课、雅思学习、机器学习这些事堆在一块儿，再掺上中期报告、西安交流的安排，还有单粒子程序模拟和核心文章的活，很容易慌了手脚。</p>
+<!-- 交互式时间节点清单 -->
+<div class="timeline-checklist">
+  <h3>项目进度时间线</h3>
+  
+  <div class="checklist-container">
+    <div class="checklist-item" data-id="item1">
+      <input type="checkbox" id="check-item1">
+      <label for="check-item1">
+        <span class="date">2023-10-01</span>
+        <span class="content">完成项目需求分析和规划</span>
+      </label>
+    </div>
+    
+<pre><code>&lt;div class=&quot;checklist-item&quot; data-id=&quot;item2&quot;&gt;
+  &lt;input type=&quot;checkbox&quot; id=&quot;check-item2&quot;&gt;
+  &lt;label for=&quot;check-item2&quot;&gt;
+    &lt;span class=&quot;date&quot;&gt;2023-10-15&lt;/span&gt;
+    &lt;span class=&quot;content&quot;&gt;设计系统架构和技术选型&lt;/span&gt;
+  &lt;/label&gt;
+&lt;/div&gt;
 
+&lt;div class=&quot;checklist-item&quot; data-id=&quot;item3&quot;&gt;
+  &lt;input type=&quot;checkbox&quot; id=&quot;check-item3&quot;&gt;
+  &lt;label for=&quot;check-item3&quot;&gt;
+    &lt;span class=&quot;date&quot;&gt;2023-11-01&lt;/span&gt;
+    &lt;span class=&quot;content&quot;&gt;完成核心功能开发&lt;/span&gt;
+  &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;checklist-item&quot; data-id=&quot;item4&quot;&gt;
+  &lt;input type=&quot;checkbox&quot; id=&quot;check-item4&quot;&gt;
+  &lt;label for=&quot;check-item4&quot;&gt;
+    &lt;span class=&quot;date&quot;&gt;2023-11-15&lt;/span&gt;
+    &lt;span class=&quot;content&quot;&gt;进行系统测试和bug修复&lt;/span&gt;
+  &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;checklist-item&quot; data-id=&quot;item5&quot;&gt;
+  &lt;input type=&quot;checkbox&quot; id=&quot;check-item5&quot;&gt;
+  &lt;label for=&quot;check-item5&quot;&gt;
+    &lt;span class=&quot;date&quot;&gt;2023-12-01&lt;/span&gt;
+    &lt;span class=&quot;content&quot;&gt;项目部署和上线&lt;/span&gt;
+  &lt;/label&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+  
+  <div class="checklist-controls">
+    <button id="reset-checklist">重置进度</button>
+    <span id="progress-text">完成: 0/5</span>
+  </div>
+</div>
+
+<style>
+.timeline-checklist {
+  border: 1px solid #e1e8ed;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.timeline-checklist h3 {
+  margin-top: 0;
+  color: #2c3e50;
+  border-bottom: 1px solid #e1e8ed;
+  padding-bottom: 10px;
+}
+
+.checklist-item {
+  margin: 15px 0;
+  padding: 10px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.checklist-item:hover {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.checklist-item input[type="checkbox"] {
+  display: none;
+}
+
+.checklist-item label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.checklist-item label:before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+
+.checklist-item input[type="checkbox"]:checked + label:before {
+  background-color: #3498db;
+  border-color: #3498db;
+}
+
+.checklist-item input[type="checkbox"]:checked + label:after {
+  content: "✓";
+  position: absolute;
+  color: white;
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+.checklist-item input[type="checkbox"]:checked + label .content {
+  text-decoration: line-through;
+  color: #7f8c8d;
+}
+
+.date {
+  font-weight: bold;
+  color: #2c3e50;
+  min-width: 100px;
+  display: inline-block;
+}
+
+.content {
+  color: #34495e;
+}
+
+.checklist-controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#reset-checklist {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#reset-checklist:hover {
+  background-color: #c0392b;
+}
+
+#progress-text {
+  font-weight: bold;
+  color: #2c3e50;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 加载保存的状态
+  loadChecklistState();
+  
+  // 为所有复选框添加事件监听
+  document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(function(checkbox) {
+    checkbox.addEventListener('change', function() {
+      saveChecklistState();
+      updateProgress();
+    });
+  });
+  
+  // 重置按钮事件
+  document.getElementById('reset-checklist').addEventListener('click', function() {
+    resetChecklist();
+  });
+  
+  // 初始化进度显示
+  updateProgress();
+  
+  function saveChecklistState() {
+    var state = {};
+    document.querySelectorAll('.checklist-item').forEach(function(item) {
+      var id = item.getAttribute('data-id');
+      var checkbox = item.querySelector('input[type="checkbox"]');
+      state[id] = checkbox.checked;
+    });
+    localStorage.setItem('timelineChecklistState', JSON.stringify(state));
+  }
+  
+  function loadChecklistState() {
+    var savedState = localStorage.getItem('timelineChecklistState');
+    if (savedState) {
+      var state = JSON.parse(savedState);
+      document.querySelectorAll('.checklist-item').forEach(function(item) {
+        var id = item.getAttribute('data-id');
+        var checkbox = item.querySelector('input[type="checkbox"]');
+        if (state[id]) {
+          checkbox.checked = state[id];
+        }
+      });
+    }
+  }
+  
+  function resetChecklist() {
+    document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(function(checkbox) {
+      checkbox.checked = false;
+    });
+    saveChecklistState();
+    updateProgress();
+  }
+  
+  function updateProgress() {
+    var total = document.querySelectorAll('.checklist-item').length;
+    var completed = document.querySelectorAll('.checklist-item input[type="checkbox"]:checked').length;
+    document.getElementById('progress-text').textContent = '完成: ' + completed + '/' + total;
+  }
+});
+</script>
                 
             </div>
             <hr/>
@@ -883,7 +1109,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">19.2k</span>
+                        class="white-color">21.4k</span>
             
             
             
