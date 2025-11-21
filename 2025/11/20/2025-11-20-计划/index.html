@@ -9,10 +9,11 @@
 —— 不然像老李课、雅思学习、机器学习这些事堆在一块儿，再掺上中期报告、西安交流的安排，还有单粒子程序模拟和核心文章的活，很容易慌了手脚。
 
 
+
   项目进度时间线
+
   
-  
-  ">
+   ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -450,9 +451,10 @@
                 <p>有些事得提前规划，有些话要说到前头，有些日子得照着计划走 </p>
 <p>—— 不然像老李课、雅思学习、机器学习这些事堆在一块儿，再掺上中期报告、西安交流的安排，还有单粒子程序模拟和核心文章的活，很容易慌了手脚。</p>
 <!-- 交互式时间节点清单 -->
+
 <div class="timeline-checklist">
   <h3>项目进度时间线</h3>
-  
+
   <div class="checklist-container">
     <div class="checklist-item" data-id="item1">
       <input type="checkbox" id="check-item1">
@@ -461,7 +463,7 @@
         <span class="content">完成项目需求分析和规划</span>
       </label>
     </div>
-    
+
 <pre><code>&lt;div class=&quot;checklist-item&quot; data-id=&quot;item2&quot;&gt;
   &lt;input type=&quot;checkbox&quot; id=&quot;check-item2&quot;&gt;
   &lt;label for=&quot;check-item2&quot;&gt;
@@ -495,7 +497,7 @@
 &lt;/div&gt;
 </code></pre>
   </div>
-  
+
   <div class="checklist-controls">
     <button id="reset-checklist">重置进度</button>
     <span id="progress-text">完成: 0/5</span>
@@ -511,7 +513,6 @@
   background-color: #f9f9f9;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-
 .timeline-checklist h3 {
   margin-top: 0;
   color: #2c3e50;
@@ -615,7 +616,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   // 加载保存的状态
   loadChecklistState();
-  
+
   // 为所有复选框添加事件监听
   document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(function(checkbox) {
     checkbox.addEventListener('change', function() {
@@ -623,15 +624,15 @@ document.addEventListener('DOMContentLoaded', function() {
       updateProgress();
     });
   });
-  
+
   // 重置按钮事件
   document.getElementById('reset-checklist').addEventListener('click', function() {
     resetChecklist();
   });
-  
+
   // 初始化进度显示
   updateProgress();
-  
+
   function saveChecklistState() {
     var state = {};
     document.querySelectorAll('.checklist-item').forEach(function(item) {
@@ -641,7 +642,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     localStorage.setItem('timelineChecklistState', JSON.stringify(state));
   }
-  
+
   function loadChecklistState() {
     var savedState = localStorage.getItem('timelineChecklistState');
     if (savedState) {
@@ -655,7 +656,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   }
-  
+
   function resetChecklist() {
     document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(function(checkbox) {
       checkbox.checked = false;
@@ -663,7 +664,7 @@ document.addEventListener('DOMContentLoaded', function() {
     saveChecklistState();
     updateProgress();
   }
-  
+
   function updateProgress() {
     var total = document.querySelectorAll('.checklist-item').length;
     var completed = document.querySelectorAll('.checklist-item input[type="checkbox"]:checked').length;
@@ -1109,7 +1110,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">21.4k</span>
+                        class="white-color">22.3k</span>
             
             
             
