@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="2025-11-17-让程序跑起来, 林竺小筑">
-    <meta name="description" content="1、用最少的算力资源和最少的时间，让优化算法跑起来。用2d小网格模拟测试2、解决存储空间问题，解决运行时间问题(已申请最大节点50；每个作业：5120核；同时运行作业：10；作业数：50；单作业运行时长：2周)3、将目标函数的matlab脚">
+    <meta name="description" content="1、用最少的算力资源和最少的时间，让优化算法跑起来。用2d小网格模拟测试
+2、解决存储空间问题，解决运行时间问题(已申请最大节点50；每个作业：5120核；同时运行作业：10；作业数：50；单作业运行时长：2周)
+3、将目标函数的matla">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -444,10 +446,44 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>1、用最少的算力资源和最少的时间，让优化算法跑起来。用2d小网格模拟测试<br>2、解决存储空间问题，解决运行时间问题(已申请最大节点50；每个作业：5120核；同时运行作业：10；作业数：50；单作业运行时长：2周)<br>3、将目标函数的matlab脚本翻译为python并适配，前提是理解并运行matlab，测试</p>
-<h1 id="核心目标：平稳从-2D-迁移到-3D，确保优化流程可靠、高效"><a href="#核心目标：平稳从-2D-迁移到-3D，确保优化流程可靠、高效" class="headerlink" title="核心目标：平稳从 2D 迁移到 3D，确保优化流程可靠、高效"></a>核心目标：平稳从 2D 迁移到 3D，确保优化流程可靠、高效</h1><h2 id="阶段一：核心功能验证（最小可行版本）"><a href="#阶段一：核心功能验证（最小可行版本）" class="headerlink" title="阶段一：核心功能验证（最小可行版本）"></a>阶段一：核心功能验证（最小可行版本）</h2><p>吃透原 2D 程序的核心逻辑<br>梳理BO.py中参数传递链路（objective_func→params_change→模拟程序→结果处理），明确 2D 场景下 “参数输入→模拟运行→目标函数计算” 的完整闭环。<br>重点理解原程序中与维度强相关的部分（如网格划分、结果文件解析data_processing中的sdf_helper操作），标记 3D 适配时需要修改的模块（例如 3D 的sdf文件结构可能与 2D 不同）。<br>Matlab 目标函数的 “翻译 + 验证”（最关键前置任务）<br>拆解 Matlab 脚本：逐行分析目标函数的计算逻辑（输入参数、中间变量、公式、输出指标），记录依赖的 Matlab 特有函数（如矩阵运算、统计函数），对应到 Python 的numpy&#x2F;scipy替代方案（例如matlab.mean→np.mean，matlab.find→np.where）。<br>编写单测用例：用相同的输入数据（如一组已知参数的模拟结果）分别运行 Matlab 脚本和 Python 翻译版，对比输出结果是否一致（允许浮点误差在合理范围，如 1e-6 内），确保核心计算逻辑无误。<br>适配 3D 数据格式：3D 场景的结果数据（如粒子坐标、能量分布）维度更高（2D 是平面，3D 是立体），需调整 Python 函数中的数组索引、维度处理逻辑（例如numpy的reshape、轴操作axis参数）。<br>2D 小网格测试验证优化流程<br>基于原 2D 程序，先用极小网格（减少计算量）跑通完整优化流程：Optuna 调参→参数写入输入文件→启动模拟→结果解析→目标函数返回→Optuna 更新搜索策略。<br>验证关键点：参数修改是否正确写入 3D 所需的输入文件（可能与 2D 的输入格式不同，需确认 3D 模拟程序的输入规范）、结果文件是否能被 Python 正确读取（3D 的sdf文件结构可能有新增维度字段）、目标函数计算是否稳定。</p>
-<h2 id="阶段二：3D-适配与资源规划"><a href="#阶段二：3D-适配与资源规划" class="headerlink" title="阶段二：3D 适配与资源规划"></a>阶段二：3D 适配与资源规划</h2><p>3D 模拟程序的接口适配<br>确认 3D 模拟程序（例如原 2D 的epoch2d对应 3D 版本epoch3d）的输入文件格式（参数名称、网格定义是否有新增字段，如 3D 的z轴参数），修改params_change函数以支持 3D 特有的参数（如z_thickness、z_tilt等）。<br>调整文件操作逻辑：3D 模拟的输出文件（.sdf等）可能更大，copy_input&#x2F;output_move需考虑大文件处理效率（如用shutil的copy2替代copy，保留元数据；或批量移动时加进度提示）。<br>存储空间与并行策略设计<br>存储优化：<br>3D 模拟结果文件体积可能是 2D 的数倍，规划存储路径（如按 “参数组 ID + 时间戳” 分文件夹），定期清理无效中间文件（output_remove函数可增加保留最近 N 次结果的逻辑）。<br>考虑用压缩格式（如npz）保存中间计算结果（如粒子权重、能量分布），减少磁盘占用。<br>并行效率最大化：<br>利用你申请的资源（50 节点、单作业 5120 核、同时运行 10 个作业），配置 Optuna 的并行模式：若模拟程序支持多节点分布式运行，需修改subprocess.Popen的启动命令（如mpirun -np 5120 …）；同时通过 Optuna 的n_jobs或外部任务调度工具（如 Slurm）控制并发数，避免资源过载。<br>实现 “作业失败重试机制”：在objective_func中捕获模拟程序的异常（如subprocess.CalledProcessError），标记失败的 trial 并自动重试（Optuna 支持retries参数或自定义回调）。</p>
-<h2 id="阶段三：性能调优与监控"><a href="#阶段三：性能调优与监控" class="headerlink" title="阶段三：性能调优与监控"></a>阶段三：性能调优与监控</h2><p>目标函数效率优化<br>分析 3D 目标函数的计算瓶颈（例如data_processing中是否有冗余的循环操作），用numpy向量化运算替代 Python 循环，或用numba加速热点函数（如Ising_energy_weighted中的双重循环）。<br>对重复使用的中间数据（如粒子权重、坐标）进行缓存（例如用functools.lru_cache或磁盘缓存），避免重复解析sdf文件。<br>优化过程监控与可视化<br>启用 Optuna 的日志功能（optuna.logging.set_verbosity），记录每个 trial 的参数、运行时间、目标函数值，方便追踪异常（如某组参数导致模拟崩溃）。<br>恢复原程序中注释掉的可视化代码（plot_pareto_front、plot_param_importances），实时查看 3D 参数的优化趋势，及时调整参数搜索范围（如发现某参数对结果影响极小，可缩小范围或固定）。<br>大规模运行前的压力测试<br>用中等规模 3D 网格（介于小网格和实际场景之间）跑 10-20 个 trial，测试：<br>单作业的实际运行时长是否符合预期（是否接近 2 周，避免超期被终止）；<br>并行运行 10 个作业时，节点资源（CPU、内存、IO）是否饱和；<br>存储系统能否支撑并发读写（避免因磁盘 IO 慢导致整体卡顿）。</p>
+                <p>1、用最少的算力资源和最少的时间，让优化算法跑起来。用2d小网格模拟测试<br>
+2、解决存储空间问题，解决运行时间问题(已申请最大节点50；每个作业：5120核；同时运行作业：10；作业数：50；单作业运行时长：2周)<br>
+3、将目标函数的matlab脚本翻译为python并适配，前提是理解并运行matlab，测试</p>
+<h1>核心目标：平稳从 2D 迁移到 3D，确保优化流程可靠、高效</h1>
+<h2 id="阶段一：核心功能验证（最小可行版本）">阶段一：核心功能验证（最小可行版本）</h2>
+<p>吃透原 2D 程序的核心逻辑<br>
+梳理BO.py中参数传递链路（objective_func→params_change→模拟程序→结果处理），明确 2D 场景下 “参数输入→模拟运行→目标函数计算” 的完整闭环。<br>
+重点理解原程序中与维度强相关的部分（如网格划分、结果文件解析data_processing中的sdf_helper操作），标记 3D 适配时需要修改的模块（例如 3D 的sdf文件结构可能与 2D 不同）。<br>
+Matlab 目标函数的 “翻译 + 验证”（最关键前置任务）<br>
+拆解 Matlab 脚本：逐行分析目标函数的计算逻辑（输入参数、中间变量、公式、输出指标），记录依赖的 Matlab 特有函数（如矩阵运算、统计函数），对应到 Python 的numpy/scipy替代方案（例如matlab.mean→np.mean，matlab.find→np.where）。<br>
+编写单测用例：用相同的输入数据（如一组已知参数的模拟结果）分别运行 Matlab 脚本和 Python 翻译版，对比输出结果是否一致（允许浮点误差在合理范围，如 1e-6 内），确保核心计算逻辑无误。<br>
+适配 3D 数据格式：3D 场景的结果数据（如粒子坐标、能量分布）维度更高（2D 是平面，3D 是立体），需调整 Python 函数中的数组索引、维度处理逻辑（例如numpy的reshape、轴操作axis参数）。<br>
+2D 小网格测试验证优化流程<br>
+基于原 2D 程序，先用极小网格（减少计算量）跑通完整优化流程：Optuna 调参→参数写入输入文件→启动模拟→结果解析→目标函数返回→Optuna 更新搜索策略。<br>
+验证关键点：参数修改是否正确写入 3D 所需的输入文件（可能与 2D 的输入格式不同，需确认 3D 模拟程序的输入规范）、结果文件是否能被 Python 正确读取（3D 的sdf文件结构可能有新增维度字段）、目标函数计算是否稳定。</p>
+<h2 id="阶段二：3D-适配与资源规划">阶段二：3D 适配与资源规划</h2>
+<p>3D 模拟程序的接口适配<br>
+确认 3D 模拟程序（例如原 2D 的epoch2d对应 3D 版本epoch3d）的输入文件格式（参数名称、网格定义是否有新增字段，如 3D 的z轴参数），修改params_change函数以支持 3D 特有的参数（如z_thickness、z_tilt等）。<br>
+调整文件操作逻辑：3D 模拟的输出文件（.sdf等）可能更大，copy_input/output_move需考虑大文件处理效率（如用shutil的copy2替代copy，保留元数据；或批量移动时加进度提示）。<br>
+存储空间与并行策略设计<br>
+存储优化：<br>
+3D 模拟结果文件体积可能是 2D 的数倍，规划存储路径（如按 “参数组 ID + 时间戳” 分文件夹），定期清理无效中间文件（output_remove函数可增加保留最近 N 次结果的逻辑）。<br>
+考虑用压缩格式（如npz）保存中间计算结果（如粒子权重、能量分布），减少磁盘占用。<br>
+并行效率最大化：<br>
+利用你申请的资源（50 节点、单作业 5120 核、同时运行 10 个作业），配置 Optuna 的并行模式：若模拟程序支持多节点分布式运行，需修改subprocess.Popen的启动命令（如mpirun -np 5120 …）；同时通过 Optuna 的n_jobs或外部任务调度工具（如 Slurm）控制并发数，避免资源过载。<br>
+实现 “作业失败重试机制”：在objective_func中捕获模拟程序的异常（如subprocess.CalledProcessError），标记失败的 trial 并自动重试（Optuna 支持retries参数或自定义回调）。</p>
+<h2 id="阶段三：性能调优与监控">阶段三：性能调优与监控</h2>
+<p>目标函数效率优化<br>
+分析 3D 目标函数的计算瓶颈（例如data_processing中是否有冗余的循环操作），用numpy向量化运算替代 Python 循环，或用numba加速热点函数（如Ising_energy_weighted中的双重循环）。<br>
+对重复使用的中间数据（如粒子权重、坐标）进行缓存（例如用functools.lru_cache或磁盘缓存），避免重复解析sdf文件。<br>
+优化过程监控与可视化<br>
+启用 Optuna 的日志功能（optuna.logging.set_verbosity），记录每个 trial 的参数、运行时间、目标函数值，方便追踪异常（如某组参数导致模拟崩溃）。<br>
+恢复原程序中注释掉的可视化代码（plot_pareto_front、plot_param_importances），实时查看 3D 参数的优化趋势，及时调整参数搜索范围（如发现某参数对结果影响极小，可缩小范围或固定）。<br>
+大规模运行前的压力测试<br>
+用中等规模 3D 网格（介于小网格和实际场景之间）跑 10-20 个 trial，测试：<br>
+单作业的实际运行时长是否符合预期（是否接近 2 周，避免超期被终止）；<br>
+并行运行 10 个作业时，节点资源（CPU、内存、IO）是否饱和；<br>
+存储系统能否支撑并发读写（避免因磁盘 IO 慢导致整体卡顿）。</p>
 
                 
             </div>
@@ -1089,6 +1125,14 @@ $(function () {
     <script src="https://cdn.jsdelivr.net/gh/962039170/962039170.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/962039170/962039170.github.io/js/matery.js"></script>
 
+    
+        <!-- <script src='https://unpkg.com/mermaid@latest/dist/mermaid.min.js'></script> -->
+        <script src='https://cdn.jsdelivr.net/gh/962039170/962039170.github.io/libs/mermaid/mermaid.min.js'></script>
+        <script>
+          if (window.mermaid) {
+            mermaid.initialize({theme: 'forest'});
+          }
+        </script>
     
 
     
