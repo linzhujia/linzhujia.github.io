@@ -464,7 +464,32 @@
 <p>马云就是运用这个杠杆的大师。在2023年调整前，他通过一个精密的&quot;金字塔&quot;结构，用极低的自有资金控制了估值庞大的蚂蚁集团。</p>
 <p><strong>调整前的控制链</strong>可以简化为：<strong>马云 → 云铂投资（有限公司）→ 君瀚 &amp; 君澳（有限合伙）→ 蚂蚁集团</strong>。</p>
 <p>下面这个流程图清晰地还原了这条控制链：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">flowchart TD</span><br><span class="line">    subgraph A [顶层：绝对控制点]</span><br><span class="line">        A1[马云&lt;br&gt;1010万元]</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    subgraph B [中间层：风险与控制隔离层]</span><br><span class="line">        B1[云铂投资&lt;br&gt;有限责任公司&lt;br&gt;（GP+执行事务合伙人）]</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    subgraph C [主体层：员工持股与资本平台]</span><br><span class="line">        C1[君瀚合伙企业&lt;br&gt;（有限合伙）]</span><br><span class="line">        C2[君澳合伙企业&lt;br&gt;（有限合伙）]</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    subgraph D [目标公司]</span><br><span class="line">        D1[蚂蚁集团]</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    A1 --100%控股--&gt; B1</span><br><span class="line">    B1 --普通合伙人&lt;br&gt;及执行事务合伙人--&gt; C1</span><br><span class="line">    B1 --普通合伙人&lt;br&gt;及执行事务合伙人--&gt; C2</span><br><span class="line">    C1 --持股约30%--&gt; D1</span><br><span class="line">    C2 --持股约21%--&gt; D1</span><br></pre></td></tr></table></figure>
+<div class="mermaid">
+  flowchart TD
+    subgraph A [顶层：绝对控制点]
+        A1[马云<br>1010万元]
+    end
+
+    subgraph B [中间层：风险与控制隔离层]
+        B1[云铂投资<br>有限责任公司<br>（GP+执行事务合伙人）]
+    end
+    
+    subgraph C [主体层：员工持股与资本平台]
+        C1[君瀚合伙企业<br>（有限合伙）]
+        C2[君澳合伙企业<br>（有限合伙）]
+    end
+    
+    subgraph D [目标公司]
+        D1[蚂蚁集团]
+    end
+    
+    A1 --100%控股--> B1
+    B1 --普通合伙人<br>及执行事务合伙人--> C1
+    B1 --普通合伙人<br>及执行事务合伙人--> C2
+    C1 --持股约30%--> D1
+    C2 --持股约21%--> D1
+</div>
+
 <p>这个结构实现了三大目的：</p>
 <ol>
 <li><strong>以小博大</strong>：通过控制两家持股约53%的有限合伙企业（君瀚、君澳），马云实际掌控了蚂蚁集团的股东会表决权。</li>
@@ -924,7 +949,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">24.1k</span>
+                        class="white-color">24k</span>
             
             
             
