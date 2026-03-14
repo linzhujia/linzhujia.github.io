@@ -4,12 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="SMILEI 5.1 北京超算云（BSCC）安装指南（自装依赖版）, 林竺小筑">
-    <meta name="description" content="
-仅使用 module load miniforge；其余依赖（编译器/MPI/并行 HDF5 等）全部在用户目录自装并固定版本。
+    <meta name="keywords" content="2026-03-10-Smilei安装, 林竺小筑">
+    <meta name="description" content="SMILEI 5.1 北京超算云（BSCC）安装指南（自装依赖版）
+
+仅使用 module load miniforge；其余依赖（编译器/MPI/并行 HDF5 等）全部在用户目录自装并固定版本。*
 
 
-目标：避开不透明的 module load mpi/hdf5/python/gcc，把关键依赖安装到 $">
+目标：避开不透明的 module ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>SMILEI 5.1 北京超算云（BSCC）安装指南（自装依赖版） | 林竺小筑</title>
+    <title>2026-03-10-Smilei安装 | 林竺小筑</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/linzhujia/linzhujia.github.io/favicon2.png">
     
     <style>
@@ -358,12 +359,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/linzhujia/linzhujia.github.io/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/linzhujia/linzhujia.github.io/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">SMILEI 5.1 北京超算云（BSCC）安装指南（自装依赖版）</h1>
+                    <h1 class="description center-align post-title">2026-03-10-Smilei安装</h1>
                 </div>
             </div>
         </div>
@@ -387,39 +388,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/BSCC/">
-                                <span class="chip bg-color">BSCC</span>
-                            </a>
-                        
-                            <a href="/tags/%E8%B6%85%E7%AE%97/">
-                                <span class="chip bg-color">超算</span>
-                            </a>
-                        
-                            <a href="/tags/SMILEI/">
-                                <span class="chip bg-color">SMILEI</span>
-                            </a>
-                        
-                            <a href="/tags/%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85/">
-                                <span class="chip bg-color">依赖安装</span>
+                            <a href="/tags/%E6%97%A5%E8%AE%B0%E3%80%81%E7%A7%91%E7%A0%94/">
+                                <span class="chip bg-color">日记、科研</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E8%B6%85%E7%AE%97%E5%AE%89%E8%A3%85/" class="post-category">
-                                超算安装
-                            </a>
-                        
-                            <a href="/categories/%E8%B6%85%E7%AE%97%E5%AE%89%E8%A3%85/SMILEI/" class="post-category">
-                                SMILEI
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -428,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2026-03-15
+                    2026-03-10
                 </div>
                 
 
@@ -469,8 +445,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ul>
-<li>仅使用 <code>module load miniforge</code>；其余依赖（编译器/MPI/并行 HDF5 等）全部在用户目录自装并固定版本。</li>
+                <h1>SMILEI 5.1 北京超算云（BSCC）安装指南（自装依赖版）</h1>
+<ul>
+<li>仅使用 <code>module load miniforge</code>；其余依赖（编译器/MPI/并行 HDF5 等）全部在用户目录自装并固定版本。*</li>
 </ul>
 <blockquote>
 <p><strong>目标</strong>：避开不透明的 <code>module load mpi/hdf5/python/gcc</code>，把关键依赖安装到 <code>$HOME/opt</code>，做到可复现、可迁移。<br>
@@ -650,7 +627,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://linzhujia.github.io/2026/03/15/2026-03-10-Smilei%E5%AE%89%E8%A3%85/">https://linzhujia.github.io/2026/03/15/2026-03-10-Smilei%E5%AE%89%E8%A3%85/</a>
+                    <a href="https://linzhujia.github.io/2026/03/10/2026-03-10-Smilei%E5%AE%89%E8%A3%85/">https://linzhujia.github.io/2026/03/10/2026-03-10-Smilei%E5%AE%89%E8%A3%85/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -688,20 +665,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/BSCC/">
-                                    <span class="chip bg-color">BSCC</span>
-                                </a>
-                            
-                                <a href="/tags/%E8%B6%85%E7%AE%97/">
-                                    <span class="chip bg-color">超算</span>
-                                </a>
-                            
-                                <a href="/tags/SMILEI/">
-                                    <span class="chip bg-color">SMILEI</span>
-                                </a>
-                            
-                                <a href="/tags/%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85/">
-                                    <span class="chip bg-color">依赖安装</span>
+                                <a href="/tags/%E6%97%A5%E8%AE%B0%E3%80%81%E7%A7%91%E7%A0%94/">
+                                    <span class="chip bg-color">日记、科研</span>
                                 </a>
                             
                         </div>
@@ -747,76 +712,9 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
-            <div class="card">
-                <a href="/2026/03/15/2026-03-10-Smilei%E5%AE%89%E8%A3%85/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/linzhujia/linzhujia.github.io/medias/featureimages/14.jpg" class="responsive-img" alt="SMILEI 5.1 北京超算云（BSCC）安装指南（自装依赖版）">
-                        
-                        <span class="card-title">SMILEI 5.1 北京超算云（BSCC）安装指南（自装依赖版）</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-15
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E8%B6%85%E7%AE%97%E5%AE%89%E8%A3%85/" class="post-category">
-                                    超算安装
-                                </a>
-                            
-                            <a href="/categories/%E8%B6%85%E7%AE%97%E5%AE%89%E8%A3%85/SMILEI/" class="post-category">
-                                    SMILEI
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/BSCC/">
-                        <span class="chip bg-color">BSCC</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%B6%85%E7%AE%97/">
-                        <span class="chip bg-color">超算</span>
-                    </a>
-                    
-                    <a href="/tags/SMILEI/">
-                        <span class="chip bg-color">SMILEI</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%BE%9D%E8%B5%96%E5%AE%89%E8%A3%85/">
-                        <span class="chip bg-color">依赖安装</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2026/03/13/2026-03-13-%E4%BA%8C%E5%91%A8%E6%80%BB%E7%BB%93/">
                     <div class="card-image">
@@ -834,8 +732,53 @@
                         
                     </div>
                     <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-03-13
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            林竺嘉
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%97%A5%E8%AE%B0%E3%80%81%E7%A7%91%E7%A0%94/">
+                        <span class="chip bg-color">日记、科研</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2026/03/09/2026-03-09-%E5%90%AF%E7%A8%8B/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/linzhujia/linzhujia.github.io/medias/featureimages/5.jpg" class="responsive-img" alt="2026-03-09-启程组会思考">
+                        
+                        <span class="card-title">2026-03-09-启程组会思考</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-09
                             </span>
                         <span class="publish-author">
                             
